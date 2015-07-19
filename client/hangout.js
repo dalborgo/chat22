@@ -47,6 +47,12 @@ var dpd = document.createElement('audio');
 var oh = document.createElement('audio');
 var pm = document.createElement('audio');
 var pim = document.createElement('audio');
+var foca = document.createElement('audio');
+var mano2 = document.createElement('audio');
+var mano = document.createElement('audio');
+var topl = document.createElement('audio');
+var melone = document.createElement('audio');
+
 
 
 sfx_newMessage.setAttribute('src', 'static/audio/sfx_newMessage.mp3');
@@ -75,8 +81,36 @@ pm.setAttribute('src', 'static/audio/pm.mp3');
 cazzo.setAttribute('src', 'static/audio/cazzo.mp3');
 dpd.setAttribute('src', 'static/audio/dedio.mp3');
 pim.setAttribute('src', 'static/audio/pim.mp3');
+foca.setAttribute('src', 'static/audio/foca.mp3');
+mano2.setAttribute('src', 'static/audio/mano2.mp3');
+mano.setAttribute('src', 'static/audio/mano.mp3');
+topl.setAttribute('src', 'static/audio/top.mp3');
+melone.setAttribute('src', 'static/audio/melone.mp3');
 gener = new Array();
 gener["dc"]=dc;
+gener["pm"]=pm;
+gener["simpatia"]=simp;
+gener["mona"]=mona;
+gener["oh"]=oh;
+gener["cazzo"]=cazzo;
+gener["dedio"]=dpd;
+gener["orco"]=orco;
+gener["asp"]=asp;
+gener["pd"]=pd2;
+gener["ness"]=ness;
+gener["se"]=se;
+gener["dp"]=dp;
+gener["db"]=db;
+gener["cana"]=cana;
+gener["madonna"]=mad;
+gener["vaffa"]=vaff;
+gener["vaffd"]=vaffd;
+gener["orca"]=orcom;
+gener["sch"]=sch;
+gener["dc3"]=dc3;
+gener["dcm"]=dcm;
+
+
 /*
 	Sprite Variables
 */
@@ -94,316 +128,11 @@ sessionData[c] = {};
 */
 
 
-function frasiDic(b,f){
-    if (b.search("dc3") != -1) {
-        dc3.addEventListener('ended', function () {
-            b = b.replace("dc3", "");
-            frasiDic(b);
-        });
-        dc3.play();
-    }
-    else if (b.search("pim") != -1) {
-        pim.addEventListener('ended', function () {
-            b = b.replace("pim", "");
-            frasiDic(b);
-            return;
-        });
-        pim.play();
-    }
-    else if (b.search("pd") != -1) {
-        pd2.addEventListener('ended', function () {
-            b = b.replace("pd", "");
-            frasiDic(b);
-        });
-        pd2.play();
-    } else if (b.search("schifoso") != -1) {
-        sch.addEventListener('ended', function () {
-            b = b.replace("schifoso", "");
-            frasiDic(b);
-        });
-        sch.play();
-    } else if (b.search("orca") != -1) {
-        orcom.addEventListener('ended', function () {
-            b = b.replace("orca", "");
-            frasiDic(b);
-        });
-        orcom.play();
-    } else if (b.search("dcm") != -1) {
-        dcm.addEventListener('ended', function () {
-            b = b.replace("dcm", "");
-            frasiDic(b);
-        });
-        dcm.play();
-    } else if (b.search("orco") != -1) {
-        orco.addEventListener('ended', function () {
-            b = b.replace("orco", "");
-            frasiDic(b);
-        });
-        orco.play();
-    } else if (b.search("aspetta") != -1) {
-        asp.addEventListener('ended', function () {
-            b = b.replace("aspetta", "");
-            frasiDic(b);
-        });
-        asp.play();
-    } else if (b.search("mp") != -1) {
-        mp.addEventListener('ended', function () {
-            b = b.replace("mp", "");
-            frasiDic(b);
-        });
-        mp.play();
-    } else if (b.search("vaffd") != -1) {
-        vaffd.addEventListener('ended', function () {
-            b = b.replace("vaffd", "");
-            frasiDic(b);
-        });
-        vaffd.play();
-    } else if (b.search("canaia") != -1) {
-        cana.addEventListener('ended', function () {
-            b = b.replace("canaia", "");
-            frasiDic(b);
-        });
-        cana.play();
-    } else if (b.search("vaff") != -1) {
-        vaff.addEventListener('ended', function () {
-            b = b.replace("vaff", "");
-            frasiDic(b);
-        });
-        vaff.play();
-    } else if (b.search("dp") != -1) {
-        dp.addEventListener('ended', function () {
-            b = b.replace("dp", "");
-            frasiDic(b);
-        });
-        dp.play();
-    } else if (b.search("db") != -1) {
-        db.addEventListener('ended', function () {
-            b = b.replace("db", "");
-            frasiDic(b);
-        });
-        db.play();
-    } else if (b.search("dc") != -1) {
-        dc.addEventListener('ended', function () {
-            b = b.replace("dc", "");
-            frasiDic(b);
-        });
-        dc.play();
-    } else if (b.search("se non best") != -1) {
-        se.addEventListener('ended', function () {
-            b = b.replace("se non best", "");
-            frasiDic(b);
-        });
-        se.play();
-    } else if (b.search("madonna") != -1) {
-        mad.addEventListener('ended', function () {
-            b = b.replace("madonna", "");
-            frasiDic(b);
-        });
-        mad.play();
-    } else if (b.search("nessuno") != -1) {
-        ness.addEventListener('ended', function () {
-            b = b.replace("nessuno", "");
-            frasiDic(b);
-        });
-        ness.play();
-    } else if (b.search("mona") != -1) {
-        mona.addEventListener('ended', function () {
-            b = b.replace("mona", "");
-            frasiDic(b);
-        });
-        mona.play();
-    } else if (b.search("pm") != -1) {
-        pm.addEventListener('ended', function () {
-            b = b.replace("pm", "");
-            frasiDic(b);
-        });
-        pm.play();
-    } else if (b.search("dedio") != -1) {
-        dpd.addEventListener('ended', function () {
-            b = b.replace("dedio", "");
-            frasiDic(b);
-        });
-        dpd.play();
-    } else if (b.search("oh") != -1) {
-        oh.addEventListener('ended', function () {
-            b = b.replace("oh", "");
-            frasiDic(b);
-        });
-        oh.play();
-    } else if (b.search("cazzo") != -1) {
-        cazzo.addEventListener('ended', function () {
-            b = b.replace("cazzo", "");
-            frasiDic(b);
-        });
-        cazzo.play();
-    } else if (b.search("casino") != -1) {
-        simp.addEventListener('ended', function () {
-            b = b.replace("casino", "");
-            frasiDic(b);
-        });
-        simp.play();
-    }
-    else if (f == 'si')
-        sfx_newMessage.play();
-    else{
-        b=null;
-        return;
-    }
-}
 
 
 
-function frasi(b,f){
-        if (b.search("dc3") != -1) {
-            dc3.addEventListener('ended', function () {
-                b = b.replace("dc3", "");
-                frasi(b);
-            });
-            dc3.play();
-        }
-        else if (b.search("pim") != -1 && luiName=="pisi") {
-            pim.addEventListener('ended', function () {
-                b = b.replace("pim", "");
-                frasi(b);
-            });
-            pim.play();
-        }
-        else if (b.search("pd") != -1) {
-            pd2.addEventListener('ended', function () {
-                b = b.replace("pd", "");
-                frasi(b);
-            });
-            pd2.play();
-        } else if (b.search("schifoso") != -1) {
-            sch.addEventListener('ended', function () {
-                b = b.replace("schifoso", "");
-                frasi(b);
-            });
-            sch.play();
-        } else if (b.search("orca") != -1) {
-            orcom.addEventListener('ended', function () {
-                b = b.replace("orca", "");
-                frasi(b);
-            });
-            orcom.play();
-        } else if (b.search("dcm") != -1) {
-            dcm.addEventListener('ended', function () {
-                b = b.replace("dcm", "");
-                frasi(b);
-            });
-            dcm.play();
-        } else if (b.search("orco") != -1) {
-            orco.addEventListener('ended', function () {
-                b = b.replace("orco", "");
-                frasi(b);
-            });
-            orco.play();
-        } else if (b.search("aspetta") != -1) {
-            asp.addEventListener('ended', function () {
-                b = b.replace("aspetta", "");
-                frasi(b);
-            });
-            asp.play();
-        } else if (b.search("mp") != -1) {
-            mp.addEventListener('ended', function () {
-                b = b.replace("mp", "");
-                frasi(b);
-            });
-            mp.play();
-        } else if (b.search("vaffd") != -1) {
-            vaffd.addEventListener('ended', function () {
-                b = b.replace("vaffd", "");
-                frasi(b);
-            });
-            vaffd.play();
-        } else if (b.search("canaia") != -1) {
-            cana.addEventListener('ended', function () {
-                b = b.replace("canaia", "");
-                frasi(b);
-            });
-            cana.play();
-        } else if (b.search("vaff") != -1) {
-            vaff.addEventListener('ended', function () {
-                b = b.replace("vaff", "");
-                frasi(b);
-            });
-            vaff.play();
-        } else if (b.search("dp") != -1) {
-            dp.addEventListener('ended', function () {
-                b = b.replace("dp", "");
-                frasi(b);
-            });
-            dp.play();
-        } else if (b.search("db") != -1) {
-            db.addEventListener('ended', function () {
-                b = b.replace("db", "");
-                frasi(b);
-            });
-            db.play();
-        } else if (b.search("dc") != -1) {
-            dc.addEventListener('ended', function () {
-                b = b.replace("dc", "");
-                frasi(b);
-            });
-            dc.play();
-        } else if (b.search("se non best") != -1) {
-            se.addEventListener('ended', function () {
-                b = b.replace("se non best", "");
-                frasi(b);
-            });
-            se.play();
-        } else if (b.search("madonna") != -1) {
-            mad.addEventListener('ended', function () {
-                b = b.replace("madonna", "");
-                frasi(b);
-            });
-            mad.play();
-        } else if (b.search("nessuno") != -1) {
-            ness.addEventListener('ended', function () {
-                b = b.replace("nessuno", "");
-                frasi(b);
-            });
-            ness.play();
-        } else if (b.search("mona") != -1) {
-            mona.addEventListener('ended', function () {
-                b = b.replace("mona", "");
-                frasi(b);
-            });
-            mona.play();
-        } else if (b.search("pm") != -1) {
-            pm.addEventListener('ended', function () {
-                b = b.replace("pm", "");
-                frasi(b);
-            });
-            pm.play();
-        } else if (b.search("dedio") != -1) {
-            dpd.addEventListener('ended', function () {
-                b = b.replace("dedio", "");
-                frasi(b);
-            });
-            dpd.play();
-        } else if (b.search("oh") != -1) {
-            oh.addEventListener('ended', function () {
-                b = b.replace("oh", "");
-                frasi(b);
-            });
-            oh.play();
-        } else if (b.search("cazzo") != -1) {
-            cazzo.addEventListener('ended', function () {
-                b = b.replace("cazzo", "");
-                frasi(b);
-            });
-            cazzo.play();
-        } else if (b.search("casino") != -1) {
-            simp.addEventListener('ended', function () {
-                b = b.replace("casino", "");
-                frasi(b);
-            });
-            simp.play();
-        }
-        else if (f == 'si')
-            sfx_newMessage.play();
-}
+
+
 $( "#log" ).click(function() {
 	if (pd)
 	{
@@ -487,15 +216,29 @@ function submitChat(chatMsg)
 function gos(arr, cosa){
     if(cosa=="pisinman"){
         gener["pim"]=pim;
+        gener["foca"]=foca;
+        gener["mano"]=mano;
+        gener["mano2"]=mano2;
+        gener["top"]=topl;
+        gener["melone"]=melone;
     }else {
         gener["pim"] = undefined;
+        gener["foca"]=undefined;
+        gener["mano"]=undefined;
+        gener["mano2"]=undefined;
+        gener["top"]=undefined;
+        gener["melone"]=undefined;
     }
     trova=false;
     i=0;
     j=0;
+	primo=-1;
     for (var obj in arr) {
-        if(gener[arr[j]]){
-            gener[arr[j++]].addEventListener('ended', function () {
+        if(gener[arr[j++]]){
+            if(primo==-1)
+			    primo=j-1;
+            gener[arr[j-1]].addEventListener('ended', function () {
+				i=primo++;
                 if (gener[arr[++i]])
                     gener[arr[i]].play();
                 this.removeEventListener('ended',arguments.callee,false);
@@ -503,8 +246,8 @@ function gos(arr, cosa){
             trova=true;
         }
     }
-    if(gener[arr[0]])
-        gener[arr[0]].play();
+    if(gener[arr[primo]])
+        gener[arr[primo]].play();
     if(trova)
         sfx_newMessage.play();
 }
@@ -864,7 +607,7 @@ $(function()
 					// done
 				}
 			});
-			
+            $("#chatbar").focus();
 			sfx_click.play();
 		}
 	});
