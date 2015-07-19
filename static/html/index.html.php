@@ -32,9 +32,11 @@
 			<div id="male_2.png" class="sel_avatar gray" style="background:url('static/sprites/ss1/male_2.png') no-repeat;"></div>
 			<div id="female.png" class="sel_avatar gray" style="background:url('static/sprites/ss1/female.png') no-repeat;"></div>
 			<div id="female_2.png" class="sel_avatar gray" style="background:url('static/sprites/ss1/female_2.png') no-repeat;"></div>
+			<div id="male_3.png" class="sel_avatar gray" style="background:url('static/sprites/ss1/male_3.png') no-repeat;"></div>
 		</div>
 		<div id="loginInfo">
-			<input type="text" id="loginInput" placeholder="Scegli un nickname" maxlength="15" value="<?php echo rand ( 0 , 10000 ) ?>">
+<!--			<input type="text" id="loginInput" placeholder="Scegli un nickname" maxlength="15" value="--><?php //echo rand ( 0 , 10000 ) ?><!--">-->
+			<input type="text" id="loginInput" placeholder="Scegli un nickname" maxlength="15" value="pisinman">
 			<div id="loginButton">Entra</div>
 		</div>
 	</div>

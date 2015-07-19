@@ -15,9 +15,11 @@ var selectedAvatar = "male.png";
 var audio = null;
 var allowInput = false;
 var myName = null;
+var luiName = null;
 var allowMove = true;
 var pd = false;
 var hd = false;
+var dentro = false;
 
 var sfx_newMessage = document.createElement('audio');
 var sfx_click = document.createElement('audio');
@@ -25,7 +27,7 @@ var pd2 = document.createElement('audio');
 var ness = document.createElement('audio');
 var mad = document.createElement('audio');
 var se = document.createElement('audio');
-var db2 = document.createElement('audio');
+var db = document.createElement('audio');
 var dc = document.createElement('audio');
 var dp = document.createElement('audio');
 var vaff = document.createElement('audio');
@@ -37,8 +39,15 @@ var orco = document.createElement('audio');
 var dcm = document.createElement('audio');
 var orcom = document.createElement('audio');
 var sch = document.createElement('audio');
-var dp3 = document.createElement('audio');
 var dc3 = document.createElement('audio');
+var simp = document.createElement('audio');
+var cazzo = document.createElement('audio');
+var mona = document.createElement('audio');
+var dpd = document.createElement('audio');
+var oh = document.createElement('audio');
+var pm = document.createElement('audio');
+var pim = document.createElement('audio');
+
 
 sfx_newMessage.setAttribute('src', 'static/audio/sfx_newMessage.mp3');
 sfx_click.setAttribute('src', 'static/audio/sfx_click.mp3');
@@ -46,7 +55,7 @@ pd2.setAttribute('src', 'static/audio/pd.mp3');
 ness.setAttribute('src', 'static/audio/ness.mp3');
 mad.setAttribute('src', 'static/audio/mad.mp3');
 se.setAttribute('src', 'static/audio/se.mp3');
-db2.setAttribute('src', 'static/audio/db2.mp3');
+db.setAttribute('src', 'static/audio/db.mp3');
 dc.setAttribute('src', 'static/audio/dc.mp3');
 dp.setAttribute('src', 'static/audio/dp.mp3');
 vaff.setAttribute('src', 'static/audio/vaff.mp3');
@@ -58,8 +67,16 @@ orco.setAttribute('src', 'static/audio/orco.mp3');
 dcm.setAttribute('src', 'static/audio/dcm.mp3');
 orcom.setAttribute('src', 'static/audio/orcom.mp3');
 sch.setAttribute('src', 'static/audio/sch.mp3');
-dp3.setAttribute('src', 'static/audio/dp3.mp3');
 dc3.setAttribute('src', 'static/audio/dc3.mp3');
+simp.setAttribute('src', 'static/audio/simpatia.mp3');
+mona.setAttribute('src', 'static/audio/mona.mp3');
+oh.setAttribute('src', 'static/audio/oh.mp3');
+pm.setAttribute('src', 'static/audio/pm.mp3');
+cazzo.setAttribute('src', 'static/audio/cazzo.mp3');
+dpd.setAttribute('src', 'static/audio/dedio.mp3');
+pim.setAttribute('src', 'static/audio/pim.mp3');
+gener = new Array();
+gener["dc"]=dc;
 /*
 	Sprite Variables
 */
@@ -76,7 +93,318 @@ sessionData[c] = {};
 	Define Functions
 */
 
-$( "#log" ).click(function() { 
+
+function frasiDic(b,f){
+    if (b.search("dc3") != -1) {
+        dc3.addEventListener('ended', function () {
+            b = b.replace("dc3", "");
+            frasiDic(b);
+        });
+        dc3.play();
+    }
+    else if (b.search("pim") != -1) {
+        pim.addEventListener('ended', function () {
+            b = b.replace("pim", "");
+            frasiDic(b);
+            return;
+        });
+        pim.play();
+    }
+    else if (b.search("pd") != -1) {
+        pd2.addEventListener('ended', function () {
+            b = b.replace("pd", "");
+            frasiDic(b);
+        });
+        pd2.play();
+    } else if (b.search("schifoso") != -1) {
+        sch.addEventListener('ended', function () {
+            b = b.replace("schifoso", "");
+            frasiDic(b);
+        });
+        sch.play();
+    } else if (b.search("orca") != -1) {
+        orcom.addEventListener('ended', function () {
+            b = b.replace("orca", "");
+            frasiDic(b);
+        });
+        orcom.play();
+    } else if (b.search("dcm") != -1) {
+        dcm.addEventListener('ended', function () {
+            b = b.replace("dcm", "");
+            frasiDic(b);
+        });
+        dcm.play();
+    } else if (b.search("orco") != -1) {
+        orco.addEventListener('ended', function () {
+            b = b.replace("orco", "");
+            frasiDic(b);
+        });
+        orco.play();
+    } else if (b.search("aspetta") != -1) {
+        asp.addEventListener('ended', function () {
+            b = b.replace("aspetta", "");
+            frasiDic(b);
+        });
+        asp.play();
+    } else if (b.search("mp") != -1) {
+        mp.addEventListener('ended', function () {
+            b = b.replace("mp", "");
+            frasiDic(b);
+        });
+        mp.play();
+    } else if (b.search("vaffd") != -1) {
+        vaffd.addEventListener('ended', function () {
+            b = b.replace("vaffd", "");
+            frasiDic(b);
+        });
+        vaffd.play();
+    } else if (b.search("canaia") != -1) {
+        cana.addEventListener('ended', function () {
+            b = b.replace("canaia", "");
+            frasiDic(b);
+        });
+        cana.play();
+    } else if (b.search("vaff") != -1) {
+        vaff.addEventListener('ended', function () {
+            b = b.replace("vaff", "");
+            frasiDic(b);
+        });
+        vaff.play();
+    } else if (b.search("dp") != -1) {
+        dp.addEventListener('ended', function () {
+            b = b.replace("dp", "");
+            frasiDic(b);
+        });
+        dp.play();
+    } else if (b.search("db") != -1) {
+        db.addEventListener('ended', function () {
+            b = b.replace("db", "");
+            frasiDic(b);
+        });
+        db.play();
+    } else if (b.search("dc") != -1) {
+        dc.addEventListener('ended', function () {
+            b = b.replace("dc", "");
+            frasiDic(b);
+        });
+        dc.play();
+    } else if (b.search("se non best") != -1) {
+        se.addEventListener('ended', function () {
+            b = b.replace("se non best", "");
+            frasiDic(b);
+        });
+        se.play();
+    } else if (b.search("madonna") != -1) {
+        mad.addEventListener('ended', function () {
+            b = b.replace("madonna", "");
+            frasiDic(b);
+        });
+        mad.play();
+    } else if (b.search("nessuno") != -1) {
+        ness.addEventListener('ended', function () {
+            b = b.replace("nessuno", "");
+            frasiDic(b);
+        });
+        ness.play();
+    } else if (b.search("mona") != -1) {
+        mona.addEventListener('ended', function () {
+            b = b.replace("mona", "");
+            frasiDic(b);
+        });
+        mona.play();
+    } else if (b.search("pm") != -1) {
+        pm.addEventListener('ended', function () {
+            b = b.replace("pm", "");
+            frasiDic(b);
+        });
+        pm.play();
+    } else if (b.search("dedio") != -1) {
+        dpd.addEventListener('ended', function () {
+            b = b.replace("dedio", "");
+            frasiDic(b);
+        });
+        dpd.play();
+    } else if (b.search("oh") != -1) {
+        oh.addEventListener('ended', function () {
+            b = b.replace("oh", "");
+            frasiDic(b);
+        });
+        oh.play();
+    } else if (b.search("cazzo") != -1) {
+        cazzo.addEventListener('ended', function () {
+            b = b.replace("cazzo", "");
+            frasiDic(b);
+        });
+        cazzo.play();
+    } else if (b.search("casino") != -1) {
+        simp.addEventListener('ended', function () {
+            b = b.replace("casino", "");
+            frasiDic(b);
+        });
+        simp.play();
+    }
+    else if (f == 'si')
+        sfx_newMessage.play();
+    else{
+        b=null;
+        return;
+    }
+}
+
+
+
+function frasi(b,f){
+        if (b.search("dc3") != -1) {
+            dc3.addEventListener('ended', function () {
+                b = b.replace("dc3", "");
+                frasi(b);
+            });
+            dc3.play();
+        }
+        else if (b.search("pim") != -1 && luiName=="pisi") {
+            pim.addEventListener('ended', function () {
+                b = b.replace("pim", "");
+                frasi(b);
+            });
+            pim.play();
+        }
+        else if (b.search("pd") != -1) {
+            pd2.addEventListener('ended', function () {
+                b = b.replace("pd", "");
+                frasi(b);
+            });
+            pd2.play();
+        } else if (b.search("schifoso") != -1) {
+            sch.addEventListener('ended', function () {
+                b = b.replace("schifoso", "");
+                frasi(b);
+            });
+            sch.play();
+        } else if (b.search("orca") != -1) {
+            orcom.addEventListener('ended', function () {
+                b = b.replace("orca", "");
+                frasi(b);
+            });
+            orcom.play();
+        } else if (b.search("dcm") != -1) {
+            dcm.addEventListener('ended', function () {
+                b = b.replace("dcm", "");
+                frasi(b);
+            });
+            dcm.play();
+        } else if (b.search("orco") != -1) {
+            orco.addEventListener('ended', function () {
+                b = b.replace("orco", "");
+                frasi(b);
+            });
+            orco.play();
+        } else if (b.search("aspetta") != -1) {
+            asp.addEventListener('ended', function () {
+                b = b.replace("aspetta", "");
+                frasi(b);
+            });
+            asp.play();
+        } else if (b.search("mp") != -1) {
+            mp.addEventListener('ended', function () {
+                b = b.replace("mp", "");
+                frasi(b);
+            });
+            mp.play();
+        } else if (b.search("vaffd") != -1) {
+            vaffd.addEventListener('ended', function () {
+                b = b.replace("vaffd", "");
+                frasi(b);
+            });
+            vaffd.play();
+        } else if (b.search("canaia") != -1) {
+            cana.addEventListener('ended', function () {
+                b = b.replace("canaia", "");
+                frasi(b);
+            });
+            cana.play();
+        } else if (b.search("vaff") != -1) {
+            vaff.addEventListener('ended', function () {
+                b = b.replace("vaff", "");
+                frasi(b);
+            });
+            vaff.play();
+        } else if (b.search("dp") != -1) {
+            dp.addEventListener('ended', function () {
+                b = b.replace("dp", "");
+                frasi(b);
+            });
+            dp.play();
+        } else if (b.search("db") != -1) {
+            db.addEventListener('ended', function () {
+                b = b.replace("db", "");
+                frasi(b);
+            });
+            db.play();
+        } else if (b.search("dc") != -1) {
+            dc.addEventListener('ended', function () {
+                b = b.replace("dc", "");
+                frasi(b);
+            });
+            dc.play();
+        } else if (b.search("se non best") != -1) {
+            se.addEventListener('ended', function () {
+                b = b.replace("se non best", "");
+                frasi(b);
+            });
+            se.play();
+        } else if (b.search("madonna") != -1) {
+            mad.addEventListener('ended', function () {
+                b = b.replace("madonna", "");
+                frasi(b);
+            });
+            mad.play();
+        } else if (b.search("nessuno") != -1) {
+            ness.addEventListener('ended', function () {
+                b = b.replace("nessuno", "");
+                frasi(b);
+            });
+            ness.play();
+        } else if (b.search("mona") != -1) {
+            mona.addEventListener('ended', function () {
+                b = b.replace("mona", "");
+                frasi(b);
+            });
+            mona.play();
+        } else if (b.search("pm") != -1) {
+            pm.addEventListener('ended', function () {
+                b = b.replace("pm", "");
+                frasi(b);
+            });
+            pm.play();
+        } else if (b.search("dedio") != -1) {
+            dpd.addEventListener('ended', function () {
+                b = b.replace("dedio", "");
+                frasi(b);
+            });
+            dpd.play();
+        } else if (b.search("oh") != -1) {
+            oh.addEventListener('ended', function () {
+                b = b.replace("oh", "");
+                frasi(b);
+            });
+            oh.play();
+        } else if (b.search("cazzo") != -1) {
+            cazzo.addEventListener('ended', function () {
+                b = b.replace("cazzo", "");
+                frasi(b);
+            });
+            cazzo.play();
+        } else if (b.search("casino") != -1) {
+            simp.addEventListener('ended', function () {
+                b = b.replace("casino", "");
+                frasi(b);
+            });
+            simp.play();
+        }
+        else if (f == 'si')
+            sfx_newMessage.play();
+}
+$( "#log" ).click(function() {
 	if (pd)
 	{
 		pd = false;
@@ -89,7 +417,7 @@ $( "#log" ).click(function() {
 	}
 });
 
-$( "#hd" ).click(function() { 
+$( "#hd" ).click(function() {
 	if (hd)
 	{
 		hd = false;
@@ -111,6 +439,12 @@ $(document).keypress(function(e) {
 		submitChat($("#chatbar").val());
 	}
 });
+$(document).keypress(function(e) {
+	if(e.which == 13) {
+		if(!dentro)
+			$('#loginButton').click();
+	}
+});
 
 function submitChat(chatMsg)
 {
@@ -120,18 +454,18 @@ function submitChat(chatMsg)
 		if ($.trim(finalMsg) != "" && $.trim(finalMsg) != null)
 		{
 			var limitLen = finalMsg.toLowerCase(finalMsg.substring(0, 40));
-			
+
 			$("#mybubble").css('z-index', 6000);
 			$("#mybubble").html(limitLen).removeClass("red");
 			$("#mybubble").show();
-			
+
 			$.doTimeout( 'closeBubble' );
 			$.doTimeout( 'closeBubble', 5000, function(){
 				$("#mybubble").fadeOut("slow");
 			});
-			
+
 			$("#chatbar").val("");
-			
+
 			$.ajax({
 				type: 'POST',
 				url: siteURL + '/core/ac.chat.php',
@@ -140,13 +474,40 @@ function submitChat(chatMsg)
 				{
 					// done
 				}
-			});	
-			
+			});
+
 			$("#popdown").prepend("<div class=\"message\"><div class=\"submitter sme\">[TU]</div><div class=\"msg\">" + limitLen + "</div>").removeClass("red");
-		}
+            var arr = limitLen.split(" ");
+            gos(arr, myName);
+        }
 	}
 }
 
+
+function gos(arr, cosa){
+    if(cosa=="pisinman"){
+        gener["pim"]=pim;
+    }else {
+        gener["pim"] = undefined;
+    }
+    trova=false;
+    i=0;
+    j=0;
+    for (var obj in arr) {
+        if(gener[arr[j]]){
+            gener[arr[j++]].addEventListener('ended', function () {
+                if (gener[arr[++i]])
+                    gener[arr[i]].play();
+                this.removeEventListener('ended',arguments.callee,false);
+            });
+            trova=true;
+        }
+    }
+    if(gener[arr[0]])
+        gener[arr[0]].play();
+    if(trova)
+        sfx_newMessage.play();
+}
 chat_poll = function()
 {
 	if (allowInput)
@@ -162,23 +523,21 @@ chat_poll = function()
 					$.each(events, function(k, v)
 					{
 						chat = v.split( "|" );
-						
-						if ($("#"+ $.trim($.trim(chat[0])) + "_chat").length) 
+
+						if ($("#"+ $.trim($.trim(chat[0])) + "_chat").length)
 						{
 							$("#"+ $.trim($.trim(chat[0])) + "_chat").css('z-index', 6000);
 							$("#"+ $.trim(chat[0]) + "_chat").html($.trim(chat[1]).toLowerCase()).removeClass("red");
 							$("#"+ $.trim(chat[0]) + "_chat").show();
-							
+
 							$.doTimeout( 'closeBubble_'+$.trim(chat[0])+'' );
 							$.doTimeout( 'closeBubble_'+$.trim(chat[0])+'', 5000, function(){
 								$("#"+ $.trim(chat[0]) + "_chat").fadeOut("slow");
 							});
-							
+                            luiName=$( "#" + $.trim(chat[0]) ).attr( "cname" );
 							$("#popdown").prepend("<div class=\"message\"><div class=\"submitter\">[" + $( "#" + $.trim(chat[0]) ).attr( "cname" ) + "]</div><div class=\"msg\">" + $.trim(chat[1]) + "</div>").removeClass("red");
-							if($.trim(chat[1]).search("pd")!=-1)
-								pd2.play();
-							else
-								sfx_newMessage.play();
+                            var arr = $.trim(chat[1]).split(" ");
+							gos(arr,luiName);
 						}
 					});
 				}
@@ -349,6 +708,7 @@ function loadRoom(roomID)
 				$('<div id="mybubble" class="bubble"></div>').appendTo('#myAvatar');
 				
 				allowInput = true;
+				$("#chatbar").focus();
 				return 1;
 			 }
 		});
@@ -391,6 +751,8 @@ function loadRoom(roomID)
 $( "#loginButton" ).click(function() 
 {
 	var username = $("#loginInput").val();
+    //$("#loginInput").unbind( "click" );
+    dentro=true;
 	if ($.trim(username) != null && $.trim(username) != "")
 	{
 		$.ajax({
@@ -412,7 +774,7 @@ $( "#loginButton" ).click(function()
 						loadRoom("lobby");
 						users_poll();
 						myName = username; 
-						
+
 						$("#popdown").prepend("<div class=\"message\"><div class=\"submitter system\">[SISTEMA]</div><div class=\"msg\">" + welcomeMSG + "</div>");
 						
 						sfx_click.play();
